@@ -20,7 +20,6 @@
         :loading="refreshing"
         :color="error ? 'red' : ''"
         icon
-        v-bind="props"
         size="small"
       >
         <v-icon>fa-solid fa-rotate</v-icon>
@@ -29,7 +28,7 @@
         </v-tooltip>
       </v-btn>
 
-      <v-btn icon v-bind="props" size="small">
+      <v-btn icon size="small">
         <v-icon>fa-solid fa-pencil</v-icon>
         <v-tooltip location="bottom" activator="parent">
           <span>Edit</span>
@@ -41,7 +40,7 @@
         />
       </v-btn>
 
-      <v-btn icon v-bind="props" size="small">
+      <v-btn icon size="small">
         <v-icon>fa-solid fa-trash</v-icon>
         <v-tooltip location="bottom" activator="parent">
           <span>Delete</span>
@@ -52,7 +51,7 @@
         />
       </v-btn>
 
-      <v-btn icon v-bind="props" size="small">
+      <v-btn icon size="small">
         <v-icon>fa-solid fa-circle-check</v-icon>
         <v-tooltip location="bottom" activator="parent">
           <span>Mark all as read</span>
