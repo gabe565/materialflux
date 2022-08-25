@@ -15,14 +15,9 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-lazy
-        tag="div"
-        class="v-col v-col-4"
-        v-for="feed in feeds"
-        :key="feed.id"
-      >
+      <v-col v-for="feed in feeds" :key="feed.id" cols="4">
         <feed-card :model-value="feed" />
-      </v-lazy>
+      </v-col>
     </v-row>
   </v-container>
 </template>

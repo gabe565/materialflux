@@ -12,17 +12,12 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-lazy
-        tag="div"
-        class="v-col v-col-4"
-        v-for="category in categories"
-        :key="category.id"
-      >
+      <v-col v-for="category in categories" :key="category.id" cols="4">
         <category-card
           :model-value="category"
           :feed-count="feedCounts[category.id]"
         />
-      </v-lazy>
+      </v-col>
     </v-row>
   </v-container>
 </template>
