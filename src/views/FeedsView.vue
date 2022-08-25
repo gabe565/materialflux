@@ -4,7 +4,9 @@
       <v-col class="flex-grow-1">
         <h1 class="text-h4">
           Feeds
-          <span v-if="feeds.length > 0">({{ feeds.length }})</span>
+          <span v-if="miniflux.feeds.length > 0"
+            >({{ miniflux.feeds.length }})</span
+          >
         </h1>
       </v-col>
       <v-col class="flex-grow-0">
@@ -15,7 +17,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="feed in feeds" :key="feed.id" cols="4">
+      <v-col v-for="feed in miniflux.feeds" :key="feed.id" cols="4">
         <feed-card :model-value="feed" />
       </v-col>
     </v-row>
@@ -23,12 +25,8 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import { getFeeds } from "../miniflux/feeds";
 import FeedCard from "../components/feeds/FeedCard.vue";
+import { useMinifluxStore } from "../stores/miniflux";
 
-const feeds = ref([]);
-onMounted(async () => {
-  feeds.value = await getFeeds();
-});
+const miniflux = useMinifluxStore();
 </script>

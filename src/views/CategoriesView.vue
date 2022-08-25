@@ -4,7 +4,9 @@
       <v-col class="flex-grow-1">
         <h1 class="text-h4">
           Categories
-          <span v-if="categories.length > 0">({{ categories.length }})</span>
+          <span v-if="miniflux.categories.length > 0"
+            >({{ miniflux.categories.length }})</span
+          >
         </h1>
       </v-col>
       <v-col class="flex-grow-0">
@@ -12,7 +14,11 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="category in categories" :key="category.id" cols="4">
+      <v-col
+        v-for="category in miniflux.categories"
+        :key="category.id"
+        cols="4"
+      >
         <category-card
           :model-value="category"
           :feed-count="feedCounts[category.id]"
@@ -23,19 +29,18 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import { getCategories } from "../miniflux/categories";
+import { computed } from "vue";
 import CategoryCard from "../components/categories/CategoryCard.vue";
-import { getFeeds } from "../miniflux/feeds";
+import { useMinifluxStore } from "../stores/miniflux";
 
-const categories = ref([]);
-const feedCounts = ref({});
-onMounted(async () => {
-  categories.value = await getCategories();
-  const feeds = await getFeeds();
-  for (const feed of feeds) {
-    let count = feedCounts.value[feed.category.id] || 0;
-    feedCounts.value[feed.category.id] = count + 1;
+const miniflux = useMinifluxStore();
+
+const feedCounts = computed(() => {
+  const counts = {};
+  for (const feed of miniflux.feeds) {
+    let count = counts[feed.category.id] || 0;
+    counts[feed.category.id] = count + 1;
   }
+  return counts;
 });
 </script>
