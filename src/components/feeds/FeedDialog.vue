@@ -13,8 +13,10 @@
       </template>
       <v-card-actions>
         <v-spacer />
-        <v-btn prepend-icon="mdi-close" @click="show = false">Cancel</v-btn>
-        <v-btn prepend-icon="mdi-content-save" color="green">{{
+        <v-btn prepend-icon="fa-solid fa-close" @click="show = false"
+          >Cancel</v-btn
+        >
+        <v-btn prepend-icon="fa-solid fa-save" color="green">{{
           props.action
         }}</v-btn>
       </v-card-actions>

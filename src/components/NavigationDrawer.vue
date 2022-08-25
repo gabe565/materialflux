@@ -42,37 +42,37 @@ const pages = [
   {
     title: "Unread",
     value: "Unread",
-    "prepend-icon": "mdi-email",
+    "prepend-icon": "fa-solid fa-envelope",
   },
   {
     title: "Starred",
     value: "Starred",
-    "prepend-icon": "mdi-star",
+    "prepend-icon": "fa-solid fa-star",
   },
   {
     title: "History",
     value: "History",
-    "prepend-icon": "mdi-history",
+    "prepend-icon": "fa-solid fa-clock-rotate-left",
   },
   {
     title: "Feeds",
     value: "Feeds",
-    "prepend-icon": "mdi-rss",
+    "prepend-icon": "fa-solid fa-square-rss",
   },
   {
     title: "Categories",
     value: "Categories",
-    "prepend-icon": "mdi-shape",
+    "prepend-icon": "fa-solid fa-shapes",
   },
   {
     title: "Settings",
     value: "Settings",
-    "prepend-icon": "mdi-cog",
+    "prepend-icon": "fa-solid fa-gear",
   },
   {
     title: "Logout",
     value: "Logout",
-    "prepend-icon": "mdi-logout",
+    "prepend-icon": "fa-solid fa-arrow-right-from-bracket",
   },
 ];
 

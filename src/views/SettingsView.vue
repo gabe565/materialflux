@@ -5,7 +5,7 @@
       <v-btn
         :href="`${miniflux.host}/settings`"
         target="_blank"
-        prepend-icon="mdi-cog"
+        prepend-icon="fa-solid fa-gear"
         size="large"
         rounded
         >Open Miniflux settings</v-btn

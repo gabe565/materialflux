@@ -8,7 +8,7 @@
         </h1>
       </v-col>
       <v-col class="flex-grow-0">
-        <v-btn prepend-icon="mdi-plus">
+        <v-btn prepend-icon="fa-solid fa-plus">
           Add Subscription
           <!--          <feed-dialog action="Add" activator="parent" />-->
         </v-btn>

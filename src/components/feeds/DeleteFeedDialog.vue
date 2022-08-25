@@ -10,8 +10,10 @@
       </template>
       <v-card-actions>
         <v-spacer />
-        <v-btn prepend-icon="mdi-close" @click="show = false">Cancel</v-btn>
-        <v-btn prepend-icon="mdi-delete" color="red">Delete</v-btn>
+        <v-btn prepend-icon="fa-solid fa-close" @click="show = false"
+          >Cancel</v-btn
+        >
+        <v-btn prepend-icon="fa-solid fa-trash" color="red">Delete</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

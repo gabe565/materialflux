@@ -9,7 +9,7 @@
           <v-card-text>
             <v-form @submit.prevent="doLogin">
               <v-text-field
-                prepend-icon="mdi-web"
+                prepend-icon="fa-solid fa-globe"
                 name="host"
                 label="Miniflux Server"
                 type="text"
@@ -18,8 +18,10 @@
                 v-model="miniflux.host"
               />
               <v-text-field
-                prepend-icon="mdi-lock"
-                :append-icon="showToken ? 'mdi-eye' : 'mdi-eye-off'"
+                prepend-icon="fa-solid fa-lock"
+                :append-icon="
+                  showToken ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'
+                "
                 @click:append="showToken = !showToken"
                 name="token"
                 label="Token"

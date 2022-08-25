@@ -8,7 +8,7 @@
         </h1>
       </v-col>
       <v-col class="flex-grow-0">
-        <v-btn prepend-icon="mdi-plus">Create Category</v-btn>
+        <v-btn prepend-icon="fa-solid fa-plus">Create Category</v-btn>
       </v-col>
     </v-row>
     <v-row>
