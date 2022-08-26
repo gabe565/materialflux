@@ -3,7 +3,7 @@
     <q-card-section>
       <div class="row items-center no-wrap">
         <div class="col">
-          <div class="text-h6">{{ props.modelValue.title }}</div>
+          <div class="text-h6 ellipsis">{{ props.modelValue.title }}</div>
           <div class="text-subtitle2">{{ props.feedCount }} feeds</div>
         </div>
       </div>

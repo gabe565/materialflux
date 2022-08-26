@@ -3,11 +3,11 @@
     <q-card-section>
       <div class="row items-center no-wrap">
         <div class="col">
-          <div class="text-h6">{{ props.modelValue.title }}</div>
+          <div class="text-h6 ellipsis">{{ props.modelValue.title }}</div>
           <a
             :href="props.modelValue.site_url"
             target="_blank"
-            class="text-subtitle2 text-blue-grey-9"
+            class="text-subtitle2 text-blue-grey-9 block ellipsis"
             >{{ props.modelValue.site_url }}</a
           >
         </div>
