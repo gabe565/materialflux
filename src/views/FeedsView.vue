@@ -14,7 +14,11 @@
       </div>
     </div>
     <div class="row q-col-gutter-lg">
-      <div v-for="feed in miniflux.feeds" :key="feed.id" class="col col-4">
+      <div
+        v-for="feed in miniflux.feeds"
+        :key="feed.id"
+        class="col col-12 col-sm-6 col-lg-4"
+      >
         <feed-card :model-value="feed" />
       </div>
     </div>

@@ -15,9 +15,9 @@
     </div>
     <div class="row q-col-gutter-lg">
       <div
-        class="col col-4"
         v-for="category in miniflux.categories"
         :key="category.id"
+        class="col col-12 col-sm-6 col-lg-4"
       >
         <category-card
           :model-value="category"
