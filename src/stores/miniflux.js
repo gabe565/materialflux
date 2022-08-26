@@ -32,8 +32,9 @@ export const useMinifluxStore = defineStore(
     };
 
     const login = async () => {
-      await refresh();
+      await refreshMe();
       authenticated.value = true;
+      await Promise.all([refreshFeeds(), refreshCategories()]);
     };
 
     const logout = async () => {

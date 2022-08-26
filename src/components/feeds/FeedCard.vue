@@ -1,67 +1,65 @@
 <template>
-  <v-card elevation="4" :title="props.modelValue.title">
-    <template #subtitle>
-      <v-card-subtitle>
-        <a
-          :href="props.modelValue.site_url"
-          target="_blank"
-          class="text-body-2 text-black"
-        >
-          {{ props.modelValue.site_url }}
-        </a>
-      </v-card-subtitle>
-    </template>
+  <q-card>
+    <q-card-section>
+      <div class="row items-center no-wrap">
+        <div class="col">
+          <div class="text-h6">{{ props.modelValue.title }}</div>
+          <a
+            :href="props.modelValue.site_url"
+            target="_blank"
+            class="text-subtitle2 text-blue-grey-9"
+            >{{ props.modelValue.site_url }}</a
+          >
+        </div>
+      </div>
+    </q-card-section>
 
-    <v-card-actions>
-      <v-spacer />
+    <q-card-actions>
+      <q-space />
 
-      <v-btn
+      <q-btn
         @click="refresh(props.modelValue)"
         :loading="refreshing"
         :color="error ? 'red' : ''"
-        icon
+        :icon="fasRotate"
         size="small"
+        round
+        flat
       >
-        <v-icon>fa-solid fa-rotate</v-icon>
-        <v-tooltip location="bottom" activator="parent">
-          <span>Refresh</span>
-        </v-tooltip>
-      </v-btn>
+        <q-tooltip>Refresh</q-tooltip>
+      </q-btn>
 
-      <v-btn icon size="small">
-        <v-icon>fa-solid fa-pencil</v-icon>
-        <v-tooltip location="bottom" activator="parent">
-          <span>Edit</span>
-        </v-tooltip>
-        <feed-dialog
-          action="Edit"
-          activator="parent"
-          :model-value="props.modelValue"
-        />
-      </v-btn>
+      <q-btn :icon="fasPencil" size="small" round flat>
+        <q-tooltip>Edit</q-tooltip>
+        <!--        <feed-dialog-->
+        <!--          action="Edit"-->
+        <!--          activator="parent"-->
+        <!--          :model-value="props.modelValue"-->
+        <!--        />-->
+      </q-btn>
 
-      <v-btn icon size="small">
-        <v-icon>fa-solid fa-trash</v-icon>
-        <v-tooltip location="bottom" activator="parent">
-          <span>Delete</span>
-        </v-tooltip>
-        <delete-feed-dialog
-          :model-value="props.modelValue"
-          activator="parent"
-        />
-      </v-btn>
+      <q-btn :icon="fasTrash" size="small" round flat>
+        <q-tooltip>Delete</q-tooltip>
+        <!--        <delete-feed-dialog-->
+        <!--          :model-value="props.modelValue"-->
+        <!--          activator="parent"-->
+        <!--        />-->
+      </q-btn>
 
-      <v-btn icon size="small">
-        <v-icon>fa-solid fa-circle-check</v-icon>
-        <v-tooltip location="bottom" activator="parent">
-          <span>Mark all as read</span>
-        </v-tooltip>
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+      <q-btn :icon="fasCircleCheck" size="small" round flat>
+        <q-tooltip>Mark all as read</q-tooltip>
+      </q-btn>
+    </q-card-actions>
+  </q-card>
 </template>
 
 <script setup>
+import {
+  fasRotate,
+  fasPencil,
+  fasTrash,
+  fasCircleCheck,
+} from "@quasar/extras/fontawesome-v6";
 import { defineProps, ref } from "vue";
 import DeleteFeedDialog from "./DeleteFeedDialog.vue";
 import FeedDialog from "./FeedDialog.vue";

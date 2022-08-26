@@ -1,87 +1,82 @@
 <template>
-  <v-navigation-drawer expand-on-hover rail>
-    <v-list>
-      <v-list-item>
-        <template #prepend>
-          <v-avatar rounded="0" start>
-            <v-img :src="logo" responsive />
-          </v-avatar>
+  <q-drawer show-if-above side="left" :width="200">
+    <q-scroll-area class="fit">
+      <q-list padding class="menu-list">
+        <template v-for="page in pages" :key="page.value">
+          <q-item
+            :disable="!miniflux.authenticated"
+            clickable
+            v-ripple
+            :to="page.to"
+          >
+            <q-item-section avatar>
+              <q-icon :name="page.icon" />
+            </q-item-section>
+
+            <q-item-section>{{ page.title }}</q-item-section>
+          </q-item>
         </template>
-
-        <v-list-item-title>
-          {{ miniflux.me?.username }}
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          <a :href="miniflux.host" target="_blank">{{ miniflux.host }}</a>
-        </v-list-item-subtitle>
-      </v-list-item>
-    </v-list>
-
-    <v-divider></v-divider>
-
-    <v-list
-      density="compact"
-      nav
-      :disabled="!miniflux.authenticated"
-      :selected="[route.name]"
-      @update:selected="updatePage"
-    >
-      <v-list-item v-for="item in pages" :key="item.value" v-bind="item" />
-    </v-list>
-  </v-navigation-drawer>
+      </q-list>
+    </q-scroll-area>
+  </q-drawer>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
 import { useMinifluxStore } from "../stores/miniflux";
-import logo from "../assets/miniflux.svg";
-import router from "../router";
+
+import {
+  fasEnvelope,
+  fasStar,
+  fasClockRotateLeft,
+  fasSquareRss,
+  fasShapes,
+  fasGear,
+  fasArrowRightFromBracket,
+} from "@quasar/extras/fontawesome-v6";
 
 const pages = [
   {
     title: "Unread",
-    value: "Unread",
-    "prepend-icon": "fa-solid fa-envelope",
+    to: "/unread",
+    icon: fasEnvelope,
   },
   {
     title: "Starred",
-    value: "Starred",
-    "prepend-icon": "fa-solid fa-star",
+    to: "/starred",
+    icon: fasStar,
   },
   {
     title: "History",
-    value: "History",
-    "prepend-icon": "fa-solid fa-clock-rotate-left",
+    to: "/history",
+    icon: fasClockRotateLeft,
   },
   {
     title: "Feeds",
-    value: "Feeds",
-    "prepend-icon": "fa-solid fa-square-rss",
+    to: "/feeds",
+    icon: fasSquareRss,
   },
   {
     title: "Categories",
-    value: "Categories",
-    "prepend-icon": "fa-solid fa-shapes",
+    to: "/categories",
+    icon: fasShapes,
   },
   {
     title: "Settings",
-    value: "Settings",
-    "prepend-icon": "fa-solid fa-gear",
+    to: "/settings",
+    icon: fasGear,
   },
   {
     title: "Logout",
-    value: "Logout",
-    "prepend-icon": "fa-solid fa-arrow-right-from-bracket",
+    to: "/Logout",
+    icon: fasArrowRightFromBracket,
   },
 ];
 
 const miniflux = useMinifluxStore();
-
-const route = useRoute();
-const updatePage = async (event) => {
-  if (event.length > 0) {
-    await router.push({ name: event[0] });
-  }
-};
 </script>
+
+<style lang="scss">
+.menu-list .q-item {
+  border-radius: 0 32px 32px 0;
+}
+</style>

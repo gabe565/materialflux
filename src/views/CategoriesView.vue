@@ -1,34 +1,35 @@
 <template>
-  <v-container>
-    <v-row class="py-5">
-      <v-col class="flex-grow-1">
+  <q-page padding class="q-px-xl">
+    <div class="row py-5">
+      <div class="col">
         <h1 class="text-h4">
           Categories
           <span v-if="miniflux.categories.length > 0"
             >({{ miniflux.categories.length }})</span
           >
         </h1>
-      </v-col>
-      <v-col class="flex-grow-0">
-        <v-btn prepend-icon="fa-solid fa-plus">Create Category</v-btn>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col
+      </div>
+      <div class="col col-shrink self-center">
+        <q-btn label="Create Category" :icon="fasPlus" />
+      </div>
+    </div>
+    <div class="row q-col-gutter-lg">
+      <div
+        class="col col-4"
         v-for="category in miniflux.categories"
         :key="category.id"
-        cols="4"
       >
         <category-card
           :model-value="category"
           :feed-count="feedCounts[category.id]"
         />
-      </v-col>
-    </v-row>
-  </v-container>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script setup>
+import { fasPlus } from "@quasar/extras/fontawesome-v6";
 import { computed } from "vue";
 import CategoryCard from "../components/categories/CategoryCard.vue";
 import { useMinifluxStore } from "../stores/miniflux";

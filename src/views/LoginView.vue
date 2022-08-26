@@ -1,66 +1,72 @@
 <template>
-  <v-container fluid class="fill-height">
-    <v-row justify="center" align-md="center" class="fill-height">
-      <v-col cols="12" sm="8" lg="4">
-        <v-card elevation="12">
-          <v-toolbar dark color="primary">
-            <v-toolbar-title>Login</v-toolbar-title>
-          </v-toolbar>
-          <v-card-text>
-            <v-form @submit.prevent="doLogin">
-              <v-text-field
-                prepend-icon="fa-solid fa-globe"
+  <q-page padding style="height: 1px">
+    <div class="row justify-center full-height">
+      <div class="col col-12 col-sm-7 col-md-4 self-center">
+        <q-card>
+          <q-card-section class="bg-primary text-white">
+            <div class="text-h6">Login</div>
+          </q-card-section>
+
+          <q-card-section>
+            <q-form @submit.prevent="doLogin">
+              <q-input
                 name="host"
                 label="Miniflux Server"
                 type="text"
                 variant="underlined"
                 placeholder="https://"
                 v-model="miniflux.host"
-              />
-              <v-text-field
-                prepend-icon="fa-solid fa-lock"
-                :append-icon="
-                  showToken ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'
-                "
-                @click:append="showToken = !showToken"
+              >
+                <template #prepend>
+                  <q-icon :name="fasGlobe" />
+                </template>
+              </q-input>
+              <q-input
                 name="token"
                 label="Token"
                 :type="showToken ? 'text' : 'password'"
                 variant="underlined"
                 v-model="miniflux.token"
-              />
+              >
+                <template #prepend>
+                  <q-icon :name="fasLock" />
+                </template>
+                <template #append>
+                  <q-btn
+                    :icon="showToken ? fasEyeSlash : fasEye"
+                    @click="showToken = !showToken"
+                    flat
+                    round
+                    size="small"
+                  />
+                </template>
+              </q-input>
 
-              <v-expand-transition>
-                <div v-show="error">
-                  <v-alert
-                    type="error"
-                    closable
-                    :model-value="true"
-                    @update:model-value="error = null"
-                  >
-                    {{ error }}
-                  </v-alert>
-                </div>
-              </v-expand-transition>
-
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="primary" type="submit" :loading="loading"
-                  >Login</v-btn
+              <q-card-actions>
+                <q-space />
+                <q-btn color="primary" type="submit" :loading="loading"
+                  >Login</q-btn
                 >
-              </v-card-actions>
-            </v-form>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+              </q-card-actions>
+            </q-form>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import {
+  fasGlobe,
+  fasLock,
+  fasEye,
+  fasEyeSlash,
+} from "@quasar/extras/fontawesome-v6";
+import { ref } from "vue";
 import { useMinifluxStore } from "../stores/miniflux";
 import router from "../router";
+import { useQuasar } from "quasar";
 
 const miniflux = useMinifluxStore();
 
@@ -71,16 +77,19 @@ if (miniflux.authenticated) {
 const showToken = ref(false);
 
 const loading = ref(false);
-const error = ref(null);
+const $q = useQuasar();
 const doLogin = async () => {
-  error.value = null;
   loading.value = true;
   try {
     await miniflux.login();
     await router.push({ name: "Unread" });
   } catch (e) {
     console.error(e);
-    error.value = e;
+    $q.notify({
+      progress: true,
+      type: "negative",
+      message: e.message,
+    });
   } finally {
     loading.value = false;
   }

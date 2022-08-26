@@ -1,20 +1,17 @@
 <template>
-  <v-container class="fill-height">
+  <q-page padding class="q-px-xl">
     <h1 class="text-h4">Settings</h1>
-    <v-container fluid>
-      <v-btn
-        :href="`${miniflux.host}/settings`"
-        target="_blank"
-        prepend-icon="fa-solid fa-gear"
-        size="large"
-        rounded
-        >Open Miniflux settings</v-btn
-      >
-    </v-container>
-  </v-container>
+    <q-btn
+      :href="`${miniflux.host}/settings`"
+      target="_blank"
+      :icon="fasGear"
+      label="Open Miniflux settings"
+    />
+  </q-page>
 </template>
 
 <script setup>
+import { fasGear } from "@quasar/extras/fontawesome-v6";
 import { useMinifluxStore } from "../stores/miniflux";
 
 const miniflux = useMinifluxStore();

@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <q-page padding class="q-px-xl">
     <h1 class="text-h4">Starred</h1>
-  </v-container>
+  </q-page>
 </template>
 
 <script setup></script>
