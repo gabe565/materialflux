@@ -12,6 +12,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: "/",
+      redirect: { name: "Unread" },
+    },
+    {
       path: "/login",
       name: "Login",
       component: LoginView,
