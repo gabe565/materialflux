@@ -1,5 +1,5 @@
 export { Quasar } from "quasar";
-import { Notify } from "quasar";
+import { Dialog, Notify } from "quasar";
 
 // Import icon libraries
 import quasarIconSet from "quasar/icon-set/svg-fontawesome-v5";
@@ -13,6 +13,6 @@ import "@quasar/extras/roboto-font/roboto-font.css";
 import "quasar/src/css/index.sass";
 
 export const QuasarOptions = {
-  plugins: { Notify },
+  plugins: { Dialog, Notify },
   iconSet: quasarIconSet,
 };

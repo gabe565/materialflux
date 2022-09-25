@@ -39,12 +39,8 @@
         <q-tooltip>Edit</q-tooltip>
       </q-btn>
 
-      <q-btn :icon="fasTrash" size="small" round flat>
+      <q-btn :icon="fasTrash" size="small" round flat @click="deleteDialog">
         <q-tooltip>Delete</q-tooltip>
-        <!--        <delete-feed-dialog-->
-        <!--          :model-value="props.modelValue"-->
-        <!--          activator="parent"-->
-        <!--        />-->
       </q-btn>
 
       <q-btn :icon="fasCircleCheck" size="small" round flat>
@@ -61,9 +57,8 @@ import {
   fasTrash,
   fasCircleCheck,
 } from "@quasar/extras/fontawesome-v6";
+import { useQuasar } from "quasar";
 import { defineProps, ref } from "vue";
-import DeleteFeedDialog from "./DeleteFeedDialog.vue";
-import FeedDialog from "./FeedDialog.vue";
 import { refreshFeed } from "../../miniflux/feeds";
 
 const props = defineProps({
@@ -88,5 +83,15 @@ const refresh = async (feed) => {
       error.value = null;
     }, 3000);
   }
+};
+
+const $q = useQuasar();
+const deleteDialog = () => {
+  $q.dialog({
+    title: "Delete feed?",
+    message: `Are you sure you want to delete <strong>${props.modelValue?.title}</strong>?`,
+    html: true,
+    cancel: true,
+  });
 };
 </script>
