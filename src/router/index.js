@@ -5,6 +5,7 @@ import SettingsView from "../views/SettingsView.vue";
 import StarredView from "../views/StarredView.vue";
 import HistoryView from "../views/HistoryView.vue";
 import FeedsView from "../views/FeedsView.vue";
+import EditFeedView from "../views/EditFeedView.vue";
 import CategoriesView from "../views/CategoriesView.vue";
 import { useMinifluxStore } from "../stores/miniflux";
 
@@ -39,6 +40,17 @@ const router = createRouter({
       path: "/feeds",
       name: "Feeds",
       component: FeedsView,
+    },
+    {
+      path: "/feed/:id/edit",
+      name: "Edit Feed",
+      component: EditFeedView,
+      props: ({ params }) => {
+        const id = Number(params.id);
+        const miniflux = useMinifluxStore();
+        const feed = miniflux.feeds.find((e) => e.id === id);
+        return { modelValue: feed };
+      },
     },
     {
       path: "/categories",

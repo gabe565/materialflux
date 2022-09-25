@@ -29,13 +29,14 @@
         <q-tooltip>Refresh</q-tooltip>
       </q-btn>
 
-      <q-btn :icon="fasPencil" size="small" round flat>
+      <q-btn
+        :icon="fasPencil"
+        size="small"
+        round
+        flat
+        :to="{ name: 'Edit Feed', params: { id: props.modelValue.id } }"
+      >
         <q-tooltip>Edit</q-tooltip>
-        <!--        <feed-dialog-->
-        <!--          action="Edit"-->
-        <!--          activator="parent"-->
-        <!--          :model-value="props.modelValue"-->
-        <!--        />-->
       </q-btn>
 
       <q-btn :icon="fasTrash" size="small" round flat>
