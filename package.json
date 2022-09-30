@@ -22,7 +22,7 @@
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
-    "@quasar/vite-plugin": "^1.1.1",
+    "@quasar/vite-plugin": "^1.2.3",
     "@rushstack/eslint-patch": "^1.1.4",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/eslint-config-prettier": "^7.0.0",
