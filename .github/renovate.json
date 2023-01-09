@@ -1,0 +1,47 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "ignorePresets": [":prHourlyLimit2"],
+  "labels": [
+    "dependencies",
+    "{{datasource}}",
+    "{{updateType}}"
+  ],
+  "automergeType": "branch",
+  "regexManagers": [
+    {
+      "fileMatch": ["Dockerfile", "docker-compose.ya?ml"],
+      "matchStrings": ["node:(?<currentValue>.+)-alpine"],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node",
+      "versioningTemplate": "node"
+    }
+  ],
+  "commitMessagePrefix": ":arrow_up:",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["lockFileMaintenance", "pin"],
+      "commitMessagePrefix": ":pushpin:"
+    },
+    {
+      "matchUpdateTypes": ["rollback"],
+      "commitMessagePrefix": ":arrow_down:"
+    },
+    {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchPackageNames": ["node"],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["lint", "prettier", "test", "cypress"],
+      "automerge": true
+    }
+  ]
+}
