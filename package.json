@@ -14,7 +14,7 @@
   "dependencies": {
     "@quasar/extras": "1.15.9",
     "pinia": "2.0.29",
-    "pinia-plugin-persistedstate": "2.4.0",
+    "pinia-plugin-persistedstate": "3.0.2",
     "quasar": "2.11.5",
     "roboto-fontface": "0.10.0",
     "vue": "3.2.45",
