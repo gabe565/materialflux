@@ -8,6 +8,10 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["lint", "prettier", "test", "vitest", "cypress"],
       "automerge": true
+    },
+    {
+      "matchPackageNames": "sass",
+      "allowedVersions": "<= 1.32"
     }
   ]
 }
