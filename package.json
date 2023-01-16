@@ -17,7 +17,7 @@
     "pinia-plugin-persistedstate": "2.4.0",
     "quasar": "2.8.4",
     "roboto-fontface": "0.10.0",
-    "vue": "3.2.40",
+    "vue": "3.2.45",
     "vue-router": "4.1.5",
     "webfontloader": "1.6.28"
   },
