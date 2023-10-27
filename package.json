@@ -30,7 +30,7 @@
     "cypress": "13.3.3",
     "eslint": "8.52.0",
     "eslint-plugin-cypress": "2.15.1",
-    "eslint-plugin-vue": "9.18.0",
+    "eslint-plugin-vue": "9.18.1",
     "jsdom": "21.1.0",
     "prettier": "3.0.3",
     "sass": "1.32.13",
