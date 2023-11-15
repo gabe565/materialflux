@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@quasar/extras": "1.16.8",
-    "pinia": "2.0.30",
+    "pinia": "2.1.7",
     "pinia-plugin-persistedstate": "3.2.0",
     "quasar": "2.14.0",
     "roboto-fontface": "0.10.0",
