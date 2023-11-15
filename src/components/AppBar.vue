@@ -21,7 +21,6 @@
 </template>
 
 <script setup>
-import { defineEmits } from "vue";
 import logo from "../assets/miniflux.svg";
 
 import { fasBars } from "@quasar/extras/fontawesome-v6";
