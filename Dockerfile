@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:18-alpine as build-deps
+FROM --platform=$BUILDPLATFORM node:20-alpine as build-deps
 WORKDIR /app
 
 COPY package.json package-lock.json .npmrc ./
