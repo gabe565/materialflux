@@ -12,7 +12,7 @@
     "test:e2e:ci": "start-server-and-test preview http://localhost:4173/ 'cypress run --e2e'"
   },
   "dependencies": {
-    "@quasar/extras": "1.16.8",
+    "@quasar/extras": "1.16.9",
     "pinia": "2.1.7",
     "pinia-plugin-persistedstate": "3.2.0",
     "quasar": "2.14.0",
